@@ -1,13 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-export default function App() {
+import ScreenOne from './ScreenOne';
+import ScreenTwo from './ScreenTwo';
+import ScreenThree from './ScreenThree';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+const MovieStack = () =>{
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator screenOptions={{
+      headerStyle:{
+        backgroundColor: '#f4b71e'
+      }
+    }}>
+    
+    <Stack.Screen name = "ScreenOne" component={ScreenOne} options={{
+      title: 'Movie Browser',
+    }}/>
+    <Stack.Screen name = "ScreenTwo" component={ScreenTwo} options={{
+      title: 'Movie Browser',
+    }}/>
+    <Stack.Screen name = "ScreenThree" component={ScreenThree} options={{
+      title: 'Movie Browser',
+    }}/>
+  </Stack.Navigator> 
+  );
+};
+
+const App = props => {
+  return (
+    <NavigationContainer>
+      <MovieStack />
+    </NavigationContainer>
   );
 }
 
@@ -19,3 +47,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
